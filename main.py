@@ -1,21 +1,45 @@
-# 1. Take in bill amount (x)
-# 2. Figure out tip amount (x)
-#   --> Default with 10%, 15%, 20%
-# 3. Print out tip and bill total with tip (x)
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# HELPER FUNCTIONS AND IMPORTS
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+def calculateTip(billAmt, tip):
+    return billAmt * (tip / 100)
 
-print("")
-print("Enter your bill total:")
-rawTotal = float(input(" --> "))
 
-tenPercent = .1 * rawTotal
-fifteenPercent = .15 * rawTotal
-twentyPercent = .2 * rawTotal
+def printTotal(tipPercent, tipAmt, tipTotal):
+    print("")
+    print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
+    print("")
+    print(f" {tipPercent}%: {tipAmt:.2f} --> Your total would be: {tipTotal:.2f}" )
+    print("")
+    print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
 
-print("")
-print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
-print("")
-print(f"                  10%: {tenPercent} --> Your total would be: {rawTotal + tenPercent}" )
-print(f"                  15%: {fifteenPercent} --> Your total would be {rawTotal + fifteenPercent}")
-print(f"                  12%: {twentyPercent} --> Your total would be {rawTotal + twentyPercent}")
-print("")
-print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
+
+
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# MAIN FUNCTION DEFINITION
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+def main():
+    # 1. Take in bill amount (x)
+    # 2. Figure out tip amount (x)
+    #   --> Default with 10%, 15%, 20%
+    # 3. Print out tip and bill total with tip (x)
+
+    print("")
+    print("Enter your bill total:")
+    rawTotal = float(input(" --> ").strip("$"))
+
+    print("")
+    print("How much would you like to tip?")
+    tipPercent = float(input(" --> ").strip())
+
+    tipAmt = calculateTip(rawTotal, tipPercent)
+    tipTotal = rawTotal + tipAmt
+
+    printTotal(tipPercent, tipAmt, tipTotal)
+
+
+
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# MAIN FUNCTION CALL
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+main()
